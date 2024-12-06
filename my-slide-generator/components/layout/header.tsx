@@ -56,27 +56,33 @@ export function Header() {
       <Container>
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/Logo Poli.png"
-                alt="Logo Poli"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
-                priority
-              />
-            </Link>
+          <div className="flex items-center gap-2">
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/Logo Poli.png"
+                  alt="Logo Poli"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                  priority
+                />
+              </Link>
+            </div>
+            <div className="h-6 w-px bg-gray-200 hidden md:block" />
           </div>
 
-          {/* Navigation Menu and Login - Grouped together and pushed right */}
-          <div className="flex items-center space-x-8">
-            <NavigationMenu className="bg-transparent">
-              <NavigationMenuList>
+          {/* Center and Right Side Combined */}
+          <div className="flex items-center gap-2">
+            {/* Navigation Menu */}
+            <NavigationMenu className="hidden md:block">
+              <NavigationMenuList className="flex gap-2">
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-slate-600">Features</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-sm font-medium text-slate-600 hover:text-slate-900 data-[active]:text-slate-900 data-[state=open]:text-slate-900">
+                    Features
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white/80 backdrop-blur-sm">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {features.map((feature) => (
                         <ListItem
                           key={feature.title}
@@ -90,9 +96,11 @@ export function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-slate-600">Resources</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-sm font-medium text-slate-600 hover:text-slate-900 data-[active]:text-slate-900 data-[state=open]:text-slate-900">
+                    Resources
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white/80 backdrop-blur-sm">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {resources.map((resource) => (
                         <ListItem
                           key={resource.title}
@@ -107,7 +115,7 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/pricing" legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-slate-600")}>
+                    <NavigationMenuLink className="text-sm font-medium text-slate-600 hover:text-slate-900">
                       Pricing
                     </NavigationMenuLink>
                   </Link>
@@ -115,20 +123,26 @@ export function Header() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {/* Action Buttons */}
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/write"
-                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-slate-600 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
-              >
-                Start Writing
-              </Link>
-              <Link
-                href="/login"
-                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-slate-600 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
-              >
-                Login
-              </Link>
+            {/* Actions and App Name */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/login"
+                  className="text-sm font-medium text-slate-600 hover:text-slate-900"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/signup"
+                  className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-4 py-2 text-sm font-medium text-slate-800 hover:from-purple-400/50 hover:to-indigo-400/50 transition-colors"
+                >
+                  Start Writing
+                </Link>
+              </div>
+              <div className="h-6 w-px bg-gray-200" />
+              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent hidden md:inline-block">
+                ScribeAI
+              </span>
             </div>
           </div>
         </div>

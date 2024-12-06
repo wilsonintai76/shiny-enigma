@@ -52,11 +52,11 @@ export function Features() {
           </p>
         </div>
         <div className="mx-auto mt-8">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6">
             {features.map((feature) => (
               <div 
                 key={feature.name} 
-                className="group relative overflow-hidden rounded-lg bg-white/20 p-4 text-center"
+                className="group relative overflow-hidden rounded-lg bg-white/20 p-2 text-center"
               >
                 <div className="relative">
                   <div className="flex justify-center">
@@ -66,10 +66,10 @@ export function Features() {
                         group-hover:scale-110 group-hover:text-neutral-900" />
                     </div>
                   </div>
-                  <h3 className="mt-3 text-sm font-medium text-neutral-900">
+                  <h3 className="mt-2 text-sm font-medium text-neutral-900">
                     {feature.name}
                   </h3>
-                  <p className="mt-1 text-xs text-neutral-600">
+                  <p className="mt-2 text-xs text-neutral-600">
                     {feature.description}
                   </p>
                 </div>

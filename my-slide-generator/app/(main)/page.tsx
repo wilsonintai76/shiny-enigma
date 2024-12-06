@@ -1,11 +1,11 @@
-import { Hero } from "@/components/landing/hero"
 import { Features } from "@/components/landing/features"
+import { Hero } from "@/components/landing/hero"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <div className="flex-1">
       <Hero />
       <Features />
-    </main>
+    </div>
   )
 }

@@ -26,26 +26,34 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Separator } from "@/components/ui/separator"
-import Image from "next/image"
 
 const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
   password: z.string().min(6, {
     message: "Password must be at least 6 characters.",
   }),
+  confirmPassword: z.string()
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
 })
 
-export function LoginForm() {
+export function SignUpForm() {
   const router = useRouter()
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
   })
 
@@ -56,19 +64,17 @@ export function LoginForm() {
     await new Promise((resolve) => setTimeout(resolve, 1000))
     console.log(values)
 
-    // For testing, let's use a dummy email/password
-    if (values.email === "test@example.com" && values.password === "password123") {
-      router.push("/dashboard")
-    }
+    // For testing, redirect to dashboard
+    router.push("/dashboard")
 
     setIsLoading(false)
   }
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignUp = async () => {
     setIsLoading(true)
-    // Simulate Google Sign-in
+    // Simulate Google Sign-up
     await new Promise((resolve) => setTimeout(resolve, 1000))
-    console.log("Google Sign-in clicked")
+    console.log("Google Sign-up clicked")
     router.push("/dashboard")
     setIsLoading(false)
   }
@@ -76,15 +82,15 @@ export function LoginForm() {
   return (
     <Card className="border-none shadow-lg">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-center">Welcome back!</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">Start Your Writing Journey</CardTitle>
         <CardDescription className="text-center">
-          Sign in to continue your writing journey
+          Create an account and unlock the power of AI-assisted writing
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        {/* Standard Google Sign-in Button */}
+        {/* Standard Google Sign-up Button */}
         <button
-          onClick={handleGoogleSignIn}
+          onClick={handleGoogleSignUp}
           disabled={isLoading}
           className="w-full h-10 px-4 py-2 border border-gray-300 rounded-md font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
         >
@@ -93,7 +99,7 @@ export function LoginForm() {
           ) : (
             <GoogleLogo />
           )}
-          <span>Sign in with Google</span>
+          <span>Sign up with Google</span>
         </button>
         
         <div className="relative">
@@ -107,6 +113,24 @@ export function LoginForm() {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your name"
+                      {...field}
+                      disabled={isLoading}
+                      className="bg-white"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -134,7 +158,26 @@ export function LoginForm() {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Create a password"
+                      {...field}
+                      disabled={isLoading}
+                      className="bg-white"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Confirm Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      placeholder="Confirm your password"
                       {...field}
                       disabled={isLoading}
                       className="bg-white"
@@ -150,27 +193,20 @@ export function LoginForm() {
               disabled={isLoading}
             >
               {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Sign In
+              Sign Up
             </Button>
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="flex flex-col space-y-2">
-        <Button
-          variant="link"
-          className="text-sm text-slate-500 hover:text-slate-800"
-          onClick={() => router.push("/forgot-password")}
-        >
-          Forgot your password?
-        </Button>
-        <div className="text-sm text-center text-slate-500">
-          Don&apos;t have an account?{" "}
+      <CardFooter>
+        <div className="text-sm text-center w-full text-slate-500">
+          Already have an account?{" "}
           <Button
             variant="link"
             className="text-slate-500 hover:text-slate-800 p-0"
-            onClick={() => router.push("/signup")}
+            onClick={() => router.push("/login")}
           >
-            Sign up
+            Sign in
           </Button>
         </div>
       </CardFooter>
