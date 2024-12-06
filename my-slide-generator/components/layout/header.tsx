@@ -52,9 +52,8 @@ const resources = [
 
 export function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="absolute inset-0 bg-gradient-to-l from-purple-100/60 via-purple-200/60 to-indigo-200/60 backdrop-blur-sm"></div>
-      <Container className="relative">
+    <header className="sticky top-0 z-50 w-full border-b bg-slate-900/5 backdrop-blur-lg">
+      <Container>
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -75,7 +74,7 @@ export function Header() {
             <NavigationMenu className="bg-transparent">
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700">Features</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-slate-600">Features</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white/80 backdrop-blur-sm">
                       {features.map((feature) => (
@@ -91,7 +90,7 @@ export function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700">Resources</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-slate-600">Resources</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white/80 backdrop-blur-sm">
                       {resources.map((resource) => (
@@ -108,7 +107,7 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/pricing" legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-gray-700")}>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-slate-600")}>
                       Pricing
                     </NavigationMenuLink>
                   </Link>
@@ -120,13 +119,13 @@ export function Header() {
             <div className="flex items-center space-x-4">
               <Link
                 href="/write"
-                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
+                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-slate-600 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
               >
                 Start Writing
               </Link>
               <Link
                 href="/login"
-                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
+                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-slate-600 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
               >
                 Login
               </Link>
