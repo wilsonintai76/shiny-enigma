@@ -56,24 +56,22 @@ export function Header() {
       <Container>
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/Logo Poli.png"
-                  alt="Logo Poli"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto"
-                  priority
-                />
-              </Link>
-            </div>
-            <div className="h-6 w-px bg-gray-200 hidden md:block" />
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/Logo Poli.png"
+                alt="Logo Poli"
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+                priority
+              />
+            </Link>
+            <div className="h-6 w-px bg-gray-200" />
           </div>
 
           {/* Center and Right Side Combined */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             {/* Navigation Menu */}
             <NavigationMenu className="hidden md:block">
               <NavigationMenuList className="flex gap-2">
@@ -123,24 +121,29 @@ export function Header() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {/* Actions and App Name */}
+            {/* Separator between Nav and Actions */}
+            <div className="h-6 w-px bg-gray-200" />
+
+            {/* Actions */}
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/login"
-                  className="text-sm font-medium text-slate-600 hover:text-slate-900"
-                >
-                  Sign in
-                </Link>
-                <Link
-                  href="/signup"
-                  className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-4 py-2 text-sm font-medium text-slate-800 hover:from-purple-400/50 hover:to-indigo-400/50 transition-colors"
-                >
-                  Start Writing
-                </Link>
-              </div>
+              <Link
+                href="/login"
+                className="text-sm font-medium text-slate-600 hover:text-slate-900"
+              >
+                Sign in
+              </Link>
+              <Link
+                href="/signup"
+                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-4 py-2 text-sm font-medium text-slate-800 hover:from-purple-400/50 hover:to-indigo-400/50 transition-colors"
+              >
+                Start Writing
+              </Link>
+            </div>
+
+            {/* App Name with Separator */}
+            <div className="flex items-center">
               <div className="h-6 w-px bg-gray-200" />
-              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent hidden md:inline-block">
+              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent ml-3">
                 ScribeAI
               </span>
             </div>

@@ -25,12 +25,13 @@ export default function AuthLayout({
                   priority
                 />
               </Link>
-              <div className="h-6 w-px bg-gray-200 hidden md:block" />
+              <div className="h-6 w-px bg-gray-200" />
             </div>
 
             {/* Right: App Name */}
             <div className="flex items-center">
-              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              <div className="h-6 w-px bg-gray-200" />
+              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent ml-3">
                 ScribeAI
               </span>
             </div>

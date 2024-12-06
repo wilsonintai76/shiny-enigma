@@ -41,9 +41,9 @@ export function Features() {
   const [imagesLoading, setImagesLoading] = useState(true)
 
   return (
-    <div className="relative py-20 bg-gradient-to-br from-purple-400 via-pink-300 to-red-300">
+    <div className="relative py-14 bg-gradient-to-br from-purple-400 via-pink-300 to-red-300">
       <Container className="relative">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+        <div className="mx-auto max-w-2xl text-center mb-3.5">
           <h2 className="text-2xl font-medium tracking-tight text-neutral-900 sm:text-3xl">
             Everything you need to write amazing eBooks
           </h2>
@@ -51,7 +51,8 @@ export function Features() {
             Powerful tools and AI assistance to help you create your masterpiece
           </p>
         </div>
-        <div className="mx-auto mt-8">
+
+        <div className="mx-auto mt-3.5">
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6">
             {features.map((feature) => (
               <div 
