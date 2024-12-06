@@ -6,8 +6,8 @@ import { Header } from "@/components/layout/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SlideGen - Create Beautiful Presentations",
-  description: "Create stunning presentations in minutes with our intuitive slide generator",
+  title: "AI eBook Writer - Create Professional Books",
+  description: "Transform your ideas into professionally crafted eBooks with our AI-powered writing platform. Get intelligent suggestions, professional templates, and publishing-ready exports.",
 };
 
 export default function RootLayout({
@@ -18,8 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-1">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 {
-  "name": "my-slide-generator",
+  "name": "ai-ebook-writer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
   "dependencies": {
     "@prisma/adapter-pg": "^6.0.1",
     "@prisma/client": "^6.0.1",
+    "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

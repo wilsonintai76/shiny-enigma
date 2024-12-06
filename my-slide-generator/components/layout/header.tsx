@@ -1,123 +1,165 @@
-'use client'
-
-import { Button } from "@/components/ui/button"
-import { Container } from "@/components/ui/container"
+import * as React from "react"
 import Link from "next/link"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
 import Image from "next/image"
+import { Container } from "@/components/ui/container"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
-const navigation = [
-  { name: 'Features', href: '/features' },
-  { name: 'Guidelines', href: '/guidelines' },
-  { name: 'Blog', href: '/blog' },
+const features = [
+  {
+    title: "AI Writing Assistant",
+    href: "/features/ai-assistant",
+    description: "Let AI help you write your book with smart suggestions and ideas.",
+  },
+  {
+    title: "Book Templates",
+    href: "/templates",
+    description: "Choose from our collection of professional book templates.",
+  },
+  {
+    title: "Writing Tools",
+    href: "/features/tools",
+    description: "Access powerful tools for plotting, character development, and more.",
+  },
+]
+
+const resources = [
+  {
+    title: "Writing Guide",
+    href: "/resources/guide",
+    description: "Learn the fundamentals of writing a successful book.",
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+    description: "Tips, tricks, and insights from professional authors.",
+  },
+  {
+    title: "Community",
+    href: "/community",
+    description: "Connect with other authors and share your experiences.",
+  },
 ]
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-gradient-to-r from-gray-200 from-20% via-gray-200/90 via-30% to-blue-500/90 backdrop-blur-sm shadow-md">
-      <Container className="pl-0">
-        <nav className="flex items-center justify-between py-2" aria-label="Global">
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="absolute inset-0 bg-gradient-to-l from-purple-100/60 via-purple-200/60 to-indigo-200/60 backdrop-blur-sm"></div>
+      <Container className="relative">
+        <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <div className="flex-shrink-0 -ml-4">
-            <Link href="/" className="block relative">
-              <div className="relative">
-                <div className="absolute inset-0 bg-white/50 backdrop-blur-3xl rounded-2xl -m-3 p-2 shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-shadow"></div>
-                <Image
-                  src="/logo.png"
-                  alt="Logo"
-                  width={140}
-                  height={40}
-                  className="relative z-10"
-                />
-              </div>
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/Logo Poli.png"
+                alt="Logo Poli"
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+                priority
+              />
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Menu className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-
-          {/* Desktop navigation */}
-          <div className="hidden lg:flex lg:gap-x-8">
-            <div className="flex gap-x-8 mr-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-900 hover:text-blue-800 font-semibold transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-            <Button asChild variant="secondary" className="text-blue-600 hover:text-blue-700 bg-white hover:bg-blue-50">
-              <Link href="/login">Log in</Link>
-            </Button>
-          </div>
-        </nav>
-      </Container>
-
-      {/* Mobile menu */}
-      <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'}`}>
-        <div className="fixed inset-0 bg-black/20" aria-hidden="true" onClick={() => setMobileMenuOpen(false)} />
-        <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gradient-to-r from-gray-200 from-20% via-gray-200/90 via-30% to-blue-500/90 backdrop-blur-sm px-6 py-6 sm:max-w-sm">
-          <div className="flex items-center justify-between">
-            <div className="-ml-4">
-              <Link href="/" className="block relative">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-white/50 backdrop-blur-3xl rounded-2xl -m-3 p-2 shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-shadow"></div>
-                  <Image
-                    src="/logo.png"
-                    alt="Logo"
-                    width={140}
-                    height={40}
-                    className="relative z-10"
-                  />
-                </div>
-              </Link>
-            </div>
-            <button
-              type="button"
-              className="-m-2.5 rounded-md p-2.5 text-white"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span className="sr-only">Close menu</span>
-              <X className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-white/10">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-gray-900 hover:text-blue-800 font-semibold transition-colors"
-                  >
-                    {item.name}
+          {/* Navigation Menu and Login - Grouped together and pushed right */}
+          <div className="flex items-center space-x-8">
+            <NavigationMenu className="bg-transparent">
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-gray-700">Features</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white/80 backdrop-blur-sm">
+                      {features.map((feature) => (
+                        <ListItem
+                          key={feature.title}
+                          title={feature.title}
+                          href={feature.href}
+                        >
+                          {feature.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-gray-700">Resources</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white/80 backdrop-blur-sm">
+                      {resources.map((resource) => (
+                        <ListItem
+                          key={resource.title}
+                          title={resource.title}
+                          href={resource.href}
+                        >
+                          {resource.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/pricing" legacyBehavior passHref>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-gray-700")}>
+                      Pricing
+                    </NavigationMenuLink>
                   </Link>
-                ))}
-              </div>
-              <div className="py-6">
-                <Button asChild variant="secondary" className="w-full text-blue-600 hover:text-blue-700 bg-white hover:bg-blue-50">
-                  <Link href="/login">Log in</Link>
-                </Button>
-              </div>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            {/* Action Buttons */}
+            <div className="flex items-center space-x-4">
+              <Link
+                href="/write"
+                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
+              >
+                Start Writing
+              </Link>
+              <Link
+                href="/login"
+                className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
+              >
+                Login
+              </Link>
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </header>
   )
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"

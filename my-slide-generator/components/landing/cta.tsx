@@ -1,41 +1,36 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 export function CTA() {
   return (
-    <Container className="mt-24 sm:mt-32 md:mt-40">
-      <div className="relative isolate overflow-hidden bg-blue-600 px-6 py-24 shadow-2xl rounded-3xl sm:px-24 xl:py-32">
-        <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          Ready to transform your presentations?
+    <Container>
+      <div className="relative isolate overflow-hidden bg-gradient-to-l from-purple-100/60 via-purple-200/60 to-indigo-200/60 px-4 py-8 text-center shadow-xl sm:rounded-2xl sm:px-6">
+        <h2 className="mx-auto max-w-xl text-xl font-bold tracking-tight text-white sm:text-2xl">
+          Ready to Write Your Next Bestseller?
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-lg leading-8 text-blue-100">
-          Join thousands of professionals who are creating stunning presentations with our platform.
+        <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-gray-300">
+          Join thousands of authors who have published their books using our AI-powered platform.
         </p>
-        <div className="mt-10 flex justify-center">
-          <Button asChild size="lg" variant="secondary" className="group">
-            <Link href="/slides/new">
-              Get Started Now
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
+        <div className="mt-10 flex items-center justify-center gap-x-6">
+          <Link
+            href="/write"
+            className="rounded-full bg-gradient-to-r from-purple-300/50 to-indigo-300/50 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:from-purple-400/50 hover:to-indigo-400/50 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 ease-out"
+          >
+            Start Writing Free
+          </Link>
+          <Link
+            href="/templates"
+            className="text-sm font-semibold leading-6 text-gray-600 hover:text-gray-800 group relative"
+          >
+            View Templates{' '}
+            <span aria-hidden="true" className="inline-block transition-all duration-300 group-hover:translate-x-1 group-hover:rotate-45 group-hover:bg-gradient-to-r group-hover:from-purple-300/50 group-hover:to-indigo-300/50 group-hover:bg-clip-text group-hover:text-transparent">
+              →
+            </span>
+          </Link>
         </div>
-        <svg
-          viewBox="0 0 1024 1024"
-          className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
-          aria-hidden="true"
-        >
-          <circle cx={512} cy={512} r={512} fill="url(#gradient)" fillOpacity="0.25" />
-          <defs>
-            <radialGradient id="gradient">
-              <stop stopColor="white" />
-              <stop offset={1} stopColor="white" />
-            </radialGradient>
-          </defs>
-        </svg>
       </div>
     </Container>
   )
