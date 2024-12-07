@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 8h20v24H10z" stroke="#6366F1" stroke-width="2"/>
+  <path d="M14 14h12M14 20h12M14 26h8" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+  <text x="40" y="26" font-family="Arial" font-size="16" font-weight="bold" fill="#4F46E5">eBook</text>
+  <path d="M8 10l2-2 2 2M8 30l2 2 2-2" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
